@@ -1,15 +1,13 @@
 import React from "react";
+import { useGameContext } from "../../context/gameContext";
 import Counter from "../Counter";
 
 import "./styles.scss";
 
-type Props = {
-    isGameGoing: boolean;
-    updateTimer: () => void;
-};
-
-const Timer: React.FC<Props> = ({ isGameGoing, updateTimer }) => {
+const Timer: React.FC = () => {
     const [time, setTime] = React.useState(0);
+
+    const { isGameGoing, updateTimer } = useGameContext();
 
     React.useEffect(() => {
         if (!isGameGoing) setTime(0);

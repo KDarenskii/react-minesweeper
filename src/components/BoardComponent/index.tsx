@@ -1,7 +1,7 @@
 import React from "react";
 import { CELL_STATUSES } from "../../constants/cellStatuses";
 import { SMILE_STATUSES } from "../../constants/smileStatuses";
-import Board from "../../models/Board";
+import { useGameContext } from "../../context/gameContext";
 import Cell from "../../models/Cell";
 import Border from "../BorderContainer/Border";
 import BorderWrapper from "../BorderContainer/BorderWrapper";
@@ -9,29 +9,20 @@ import CellComponent from "../CellComponent";
 
 import "./styles.scss";
 
-type Props = {
-    board: Board;
-    setBoard: React.Dispatch<React.SetStateAction<Board>>;
-    restartGame: (cell?: Cell) => void;
-    isGameFinished: boolean;
-    setIsGameGoing: React.Dispatch<React.SetStateAction<boolean>>;
-    setIsGameFinished: React.Dispatch<React.SetStateAction<boolean>>;
-    checkIsGamedEnded: (field: Cell[][]) => boolean;
-    setSmileStatus: React.Dispatch<React.SetStateAction<SMILE_STATUSES>>;
-};
-
-const BoardComponent: React.FC<Props> = ({
-    board,
-    setBoard,
-    restartGame,
-    isGameFinished,
-    setIsGameGoing,
-    setIsGameFinished,
-    checkIsGamedEnded,
-    setSmileStatus,
-}) => {
+const BoardComponent: React.FC = () => {
     const fieldRef = React.useRef<HTMLDivElement | null>(null);
     const [isOpenedCell, setIsOpenedCell] = React.useState(false);
+
+    const {
+        checkIsGameEnded,
+        setSmileStatus,
+        isGameFinished,
+        setIsGameFinished,
+        setIsGameGoing,
+        board,
+        setBoard,
+        restartGame,
+    } = useGameContext();
 
     React.useEffect(() => {
         fieldRef.current?.style.setProperty("--size", `${board.boardSize}`);
@@ -68,7 +59,7 @@ const BoardComponent: React.FC<Props> = ({
         setIsGameGoing(true);
         setIsOpenedCell(true);
 
-        if (checkIsGamedEnded(board.field)) {
+        if (checkIsGameEnded(board.field)) {
             setIsGameGoing(false);
             setIsGameFinished(true);
             board.openCells(cell);
@@ -85,7 +76,7 @@ const BoardComponent: React.FC<Props> = ({
         if (event.button !== 2) {
             setSmileStatus(SMILE_STATUSES.AFRAID);
         }
-    }
+    };
 
     return (
         <div className="board">
