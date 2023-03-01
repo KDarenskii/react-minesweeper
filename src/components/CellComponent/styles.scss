@@ -54,6 +54,10 @@
         background: url("./../../assets/img/cells/marked-cell.svg") no-repeat center center;
         background-size: cover;
     }
+    &[data-status="missed"] {
+        background: url("./../../assets/img/cells/missed-cell.jpg") no-repeat center center;
+        background-size: cover;
+    }
     &[data-status="supposed"] {
         background: url("./../../assets/img/cells/supposed-cell.jpg") no-repeat center center;
         background-size: cover;

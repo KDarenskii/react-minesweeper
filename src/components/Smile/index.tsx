@@ -1,9 +1,16 @@
 import React from "react";
+import { SMILE_STATUSES } from "../../constants/smileStatuses";
 
 import "./styles.scss";
 
-const Smile: React.FC = () => {
-    return <div className="smile smile--unpressed"></div>;
+type Props = {
+    status: SMILE_STATUSES;
+    onClick: () => void;
+    onMouseDown: () => void;
+}
+
+const Smile: React.FC<Props> = ({ status, onClick, onMouseDown }) => {
+    return <div className={["smile", `smile--${status}`].join(" ")} onClick={onClick} onMouseDown={onMouseDown}></div>;
 };
 
 export default Smile;

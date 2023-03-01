@@ -6,4 +6,5 @@ export enum CELL_STATUSES {
     HITTED_MINE = "hitted-mine",
     SUPPOSED = "supposed",
     MARKED = "marked",
+    MISSED = "missed"
 }

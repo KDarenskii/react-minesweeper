@@ -5,7 +5,7 @@ import { CELL_STATUSES } from "../constants/cellStatuses";
 
 export default class Board {
     readonly boardSize = 10;
-    private field: Cell[][] = [];
+    field: Cell[][] = [];
     readonly minesNumber = 8;
     private minesPositions: Point[] = [];
 
@@ -16,18 +16,7 @@ export default class Board {
         return this.minesNumber - minesCount;
     }
 
-    public initBoard() {
-        for (let x = 0; x < this.boardSize; x++) {
-            const row: Cell[] = [];
-            for (let y = 0; y < this.boardSize; y++) {
-                const cell = new Cell(x, y, false);
-                row.push(cell);
-            }
-            this.field.push(row);
-        }
-    }
-
-    public initMines() {
+    private generateMines() {
         while (this.minesNumber > this.minesPositions.length) {
             const newCoord = {
                 x: getRandomNumberInRange(this.boardSize),
@@ -37,15 +26,28 @@ export default class Board {
                 this.minesPositions.push(newCoord);
             }
         }
+    }
 
-        console.log(this.minesPositions)
+    public initBoard(cell?: Cell) {
+        this.clearBoard();
+
+        do {
+            this.generateMines();
+        } while (cell && this.minesPositions.some((pos) => cell.x === pos.x && cell.y === pos.y));
 
         for (let x = 0; x < this.boardSize; x++) {
+            const row: Cell[] = [];
             for (let y = 0; y < this.boardSize; y++) {
+                const currentCell = new Cell(x, y, false);
                 const hasMine = this.minesPositions.some((pos) => this.isCellsMathing(pos, { x, y }));
-                const cell = this.field[x][y];
-                cell.hasMine = hasMine;
+                currentCell.hasMine = hasMine;
+                if (cell && this.isCellsMathing(cell, currentCell)) {
+                    row.push(cell);
+                } else {
+                    row.push(currentCell);
+                }
             }
+            this.field.push(row);
         }
     }
 
@@ -77,10 +79,35 @@ export default class Board {
         return { cells, minesCount };
     }
 
+    private clearBoard() {
+        this.field = [];
+        this.minesPositions = [];
+    }
+
+    public isMineOpened() {
+        return this.field.some((row) => {
+            return row.some((cell) => cell.status === CELL_STATUSES.HITTED_MINE);
+        });
+    }
+
+    public openCells(cell: Cell) {
+        this.field.forEach((row) =>
+            row.forEach((currentCell) => {
+                const status = currentCell.status;
+                const hasMine = currentCell.hasMine;
+
+                if (hasMine && this.isCellsMathing(currentCell, cell)) {
+                    currentCell.status = CELL_STATUSES.MISSED;
+                } else if (hasMine) {
+                    currentCell.status = CELL_STATUSES.MINE;
+                } else if (status === CELL_STATUSES.MARKED && !hasMine) {
+                    currentCell.status = CELL_STATUSES.MISSED;
+                }
+            })
+        );
+    }
+
     public set setCell(cell: Cell) {
         this.field[cell.x][cell.y] = cell;
-    }
-    public get getField(): Cell[][] {
-        return this.field;
     }
 }

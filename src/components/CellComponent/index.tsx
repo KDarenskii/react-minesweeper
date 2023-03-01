@@ -8,9 +8,11 @@ type Props = {
     cell: Cell;
     onRightClick: (event: React.MouseEvent, cell: Cell) => void;
     onLeftClick: (cell: Cell) => void;
+    onMouseDown: (event: React.MouseEvent) => void;
+    onMouseUp: () => void;
 };
 
-const CellComponent: React.FC<Props> = ({ cell, onRightClick, onLeftClick }) => {
+const CellComponent: React.FC<Props> = ({ cell, onRightClick, onLeftClick, onMouseDown, onMouseUp }) => {
     return (
         <div
             className={[
@@ -20,6 +22,8 @@ const CellComponent: React.FC<Props> = ({ cell, onRightClick, onLeftClick }) => 
             data-status={cell.status}
             onClick={() => onLeftClick(cell)}
             onContextMenu={(event) => onRightClick(event, cell)}
+            onMouseDown={onMouseDown}
+            onMouseUp={onMouseUp}
         ></div>
     );
 };
