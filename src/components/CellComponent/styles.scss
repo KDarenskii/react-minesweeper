@@ -1,0 +1,61 @@
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &--type-number-1 {
+        background: url("./../../assets/img/cells/number-1.svg") no-repeat;
+        background-size: cover;
+    }
+    &--type-number-2 {
+        background: url("./../../assets/img/cells/number-2.svg") no-repeat;
+        background-size: cover;
+    }
+    &--type-number-3 {
+        background: url("./../../assets/img/cells/number-3.svg") no-repeat;
+        background-size: cover;
+    }
+    &--type-number-4 {
+        background: url("./../../assets/img/cells/number-4.svg") no-repeat;
+        background-size: cover;
+    }
+    &--type-number-5 {
+        background: url("./../../assets/img/cells/number-5.svg") no-repeat;
+        background-size: cover;
+    }
+    &--type-number-6 {
+        background: url("./../../assets/img/cells/number-6.svg") no-repeat;
+        background-size: cover;
+    }
+    &--type-number-7 {
+        background: url("./../../assets/img/cells/number-7.svg") no-repeat;
+        background-size: cover;
+    }
+    &--type-number-8 {
+        background: url("./../../assets/img/cells/number-8.svg") no-repeat;
+        background-size: cover;
+    }
+    &[data-status="empty"] {
+        background: url("./../../assets/img/cells/empty-cell.svg") no-repeat;
+        background-size: cover;
+    }
+    &[data-status="hidden"] {
+        background: url("./../../assets/img/cells/hidden-cell.svg") no-repeat center center;
+        background-size: cover;
+    }
+    &[data-status="mine"] {
+        background: url("./../../assets/img/cells/mine-cell.svg") no-repeat center center;
+        background-size: cover;
+    }
+    &[data-status="hitted-mine"] {
+        background: url("./../../assets/img/cells/hitted-mine-cell.svg") no-repeat center center;
+        background-size: cover;
+    }
+    &[data-status="marked"] {
+        background: url("./../../assets/img/cells/marked-cell.svg") no-repeat center center;
+        background-size: cover;
+    }
+    &[data-status="supposed"] {
+        background: url("./../../assets/img/cells/supposed-cell.jpg") no-repeat center center;
+        background-size: cover;
+    }
+}

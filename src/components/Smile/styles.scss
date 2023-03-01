@@ -1,0 +1,20 @@
+.smile {
+    height: 30px;
+    width: 30px;
+    &--unpressed {
+        background: url("./../../assets/img/smiles/smile-unpressed.svg");
+        background-size: cover;
+    }
+    &--pressed {
+        background: url("./../../assets/img/smiles/smile-pressed.svg");
+        background-size: cover;
+    }
+    &--win {
+        background: url("./../../assets/img/smiles/smile-win.svg");
+        background-size: cover;
+    }
+    &--lose {
+        background: url("./../../assets/img/smiles/smile-lose.svg");
+        background-size: cover;
+    }
+}

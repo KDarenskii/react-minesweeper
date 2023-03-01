@@ -1,0 +1,17 @@
+.border {
+    &--vertical {
+        width: 18px;
+        height: 50px;
+        background: url("./../../../assets/img/borders/border.png") no-repeat;
+        background-size: 100% 100%;
+    }
+    &--long {
+        height: 300px;
+    }
+    &--horizontal {
+        width: 300px;
+        height: 18px;
+        background: url("./../../../assets/img/borders/border-horizontal.png") no-repeat;
+        background-size: 100% 100%;
+    }
+}

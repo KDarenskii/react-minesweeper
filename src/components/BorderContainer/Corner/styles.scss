@@ -1,0 +1,28 @@
+.corner {
+    width: 18px;
+    height: 18px;
+    &--top-left {
+        background: url("./../../../assets/img/borders/corner-left-top.png") no-repeat;
+        background-size: 100% 100%;
+    }
+    &--top-right {
+        background: url("./../../../assets/img/borders/corner-right-top.png") no-repeat;
+        background-size: 100% 100%;
+    }
+    &--middle-left {
+        background: url("./../../../assets/img/borders/corner-middle-left-left.png") no-repeat;
+        background-size: 100% 100%;
+    }
+    &--middle-right {
+        background: url("./../../../assets/img/borders/corner-middle-right.png") no-repeat;
+        background-size: 100% 100%;
+    }
+    &--bottom-left {
+        background: url("./../../../assets/img/borders/corner-bottom-left.png") no-repeat;
+        background-size: 100% 100%;
+    }
+    &--bottom-right {
+        background: url("./../../../assets/img/borders/corner-bottom-right.png") no-repeat;
+        background-size: 100% 100%;
+    }
+}
