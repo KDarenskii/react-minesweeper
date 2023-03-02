@@ -1,5 +1,5 @@
-import { CELL_STATUSES } from "../constants/cellStatuses";
-import Cell from "./Cell";
+import { CELL_STATUSES } from "../../constants/cellStatuses";
+import Cell from "../Cell";
 
 export default class GameManager {
     time: number = 0;

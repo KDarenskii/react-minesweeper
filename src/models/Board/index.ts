@@ -1,13 +1,18 @@
-import Cell from "./Cell";
-import { Point } from "./types/Point";
-import { getRandomNumberInRange } from "../helpers/getRandomNumberInRange";
-import { CELL_STATUSES } from "../constants/cellStatuses";
+import Cell from "../Cell";
+import { Point } from "../types/Point";
+import { getRandomNumberInRange } from "../../helpers/getRandomNumberInRange";
+import { CELL_STATUSES } from "../../constants/cellStatuses";
 
 export default class Board {
-    readonly boardSize = 10;
+    readonly boardSize;
     field: Cell[][] = [];
-    readonly minesNumber = 8;
+    readonly minesNumber;
     private minesPositions: Point[] = [];
+
+    constructor(boardSize: number = 10, minesNumber: number = 8) {
+        this.boardSize = boardSize;
+        this.minesNumber = minesNumber;
+    }
 
     public countMinesLeft() {
         const minesCount = this.field.reduce((counter, row) => {
@@ -84,12 +89,6 @@ export default class Board {
         this.minesPositions = [];
     }
 
-    public isMineOpened() {
-        return this.field.some((row) => {
-            return row.some((cell) => cell.status === CELL_STATUSES.HITTED_MINE);
-        });
-    }
-
     public openCells(cell: Cell) {
         this.field.forEach((row) =>
             row.forEach((currentCell) => {
@@ -105,9 +104,5 @@ export default class Board {
                 }
             })
         );
-    }
-
-    public set setCell(cell: Cell) {
-        this.field[cell.x][cell.y] = cell;
     }
 }

@@ -48,7 +48,7 @@ const BoardComponent: React.FC = () => {
 
         if (cell.status === CELL_STATUSES.NUMBER) {
             const { cells, minesCount } = board.getNearbyCells(cell);
-            cell.setNearbyMinesCount = minesCount;
+            cell.nearbyMinesCount = minesCount;
             if (minesCount === 0) {
                 cell.status = CELL_STATUSES.EMPTY;
                 cells.forEach((cell) => handleOpenCell(cell, false));

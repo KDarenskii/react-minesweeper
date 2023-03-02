@@ -17,7 +17,7 @@ const CellComponent: React.FC<Props> = ({ cell, onRightClick, onLeftClick, onMou
         <div
             className={[
                 "cell",
-                cell.status === CELL_STATUSES.NUMBER ? `cell--type-number-${cell.getNearbyMinesCount}` : "",
+                cell.status === CELL_STATUSES.NUMBER ? `cell--type-number-${cell.nearbyMinesCount}` : "",
             ].join(" ")}
             data-status={cell.status}
             onClick={() => onLeftClick(cell)}

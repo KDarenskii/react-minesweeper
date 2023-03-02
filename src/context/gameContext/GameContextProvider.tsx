@@ -52,7 +52,7 @@ const GameContextProvider: React.FC<Props> = ({ children }) => {
                 minesLeft: board.countMinesLeft(),
                 updateTimer: () => gameManager.increaseTimer(),
                 initializeBoard,
-                gameManager
+                gameManager,
             }}
         >
             {children}

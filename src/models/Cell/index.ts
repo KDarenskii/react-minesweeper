@@ -1,8 +1,8 @@
-import { CELL_STATUSES } from "../constants/cellStatuses";
+import { CELL_STATUSES } from "../../constants/cellStatuses";
 
 export default class Cell {
     status: CELL_STATUSES = CELL_STATUSES.HIDDEN;
-    private nearbyMinesCount: number = 0;
+    nearbyMinesCount: number = 0;
     hasMine: boolean;
     readonly id: string;
     readonly x: number;
@@ -24,7 +24,6 @@ export default class Cell {
         } else if (this.status === CELL_STATUSES.SUPPOSED) {
             this.status = CELL_STATUSES.HIDDEN;
         }
-        return;
     }
 
     public openCell(isClicked: boolean) {
@@ -37,17 +36,5 @@ export default class Cell {
         } else {
             this.status = CELL_STATUSES.NUMBER;
         }
-    }
-
-    public set setNearbyMinesCount(count: number) {
-        if (count < 0) {
-            this.setNearbyMinesCount = 0;
-        } else {
-            this.nearbyMinesCount = count;
-        }
-    }
-
-    public get getNearbyMinesCount() {
-        return this.nearbyMinesCount;
     }
 }
