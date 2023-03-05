@@ -1,21 +1,23 @@
 import React, { useEffect } from "react";
+import { GAME_DIFFICULTIES_VALUES } from "../../constants/gameDifficulties";
 import { SMILE_STATUSES } from "../../constants/smileStatuses";
 import { useGameContext } from "../../context/gameContext";
+import Board from "../../models/Board";
 import BoardComponent from "../BoardComponent";
 import Border from "../BorderContainer/Border";
 import BorderWrapper from "../BorderContainer/BorderWrapper";
 import Corner from "../BorderContainer/Corner";
+import Button from "../Button";
 import InfoPanel from "../InfoPanel";
 import Statistics from "../Statistics";
 
 import "./styles.scss";
 
 const Game: React.FC = () => {
+    const { isGameFinished, setSmileStatus, gameManager, difficulty, setBoard, setDifficulty, restartGame } =
+        useGameContext();
 
-    const { initializeBoard, isGameFinished, setSmileStatus, gameManager } = useGameContext();
-
-
-    React.useEffect(() => {
+    useEffect(() => {
         if (isGameFinished) {
             setSmileStatus(gameManager.isWin ? SMILE_STATUSES.WIN : SMILE_STATUSES.LOSE);
         } else {
@@ -24,36 +26,58 @@ const Game: React.FC = () => {
     }, [isGameFinished, setSmileStatus, gameManager.isWin]);
 
     useEffect(() => {
-        initializeBoard();
-    }, [initializeBoard]);
+        if (difficulty) {
+            const newBoard = new Board(
+                GAME_DIFFICULTIES_VALUES[difficulty].boardSize,
+                GAME_DIFFICULTIES_VALUES[difficulty].minesCount
+            );
+            newBoard.init();
+            setBoard(newBoard);
+        }
+        // eslint-disable-next-line
+    }, [difficulty, setBoard]);
+
+    const handleGoBack = () => {
+        setDifficulty(null);
+        restartGame();
+    };
 
     return (
-        <div className="game">
-            <Statistics />
-            <div className="game__board">
-                <BorderWrapper>
-                    <Corner position="top-left" />
-                    <Border direction="horizontal" />
-                    <Corner position="top-right" />
-                </BorderWrapper>
+        <>
+            {difficulty && (
+                <div className="game">
+                    <Button className="game__button" type="notion" onClick={handleGoBack}>
+                        В главное меню
+                    </Button>
+                    <div className="game__body">
+                        <Statistics />
+                        <div className="game__board">
+                            <BorderWrapper>
+                                <Corner position="top-left" />
+                                <Border direction="horizontal" />
+                                <Corner position="top-right" />
+                            </BorderWrapper>
 
-                <InfoPanel />
-                
-                <BorderWrapper>
-                    <Corner position="middle-left" />
-                    <Border direction="horizontal" />
-                    <Corner position="middle-right" />
-                </BorderWrapper>
+                            <InfoPanel />
 
-                <BoardComponent />
+                            <BorderWrapper>
+                                <Corner position="middle-left" />
+                                <Border direction="horizontal" />
+                                <Corner position="middle-right" />
+                            </BorderWrapper>
 
-                <BorderWrapper>
-                    <Corner position="bottom-left" />
-                    <Border direction="horizontal" />
-                    <Corner position="bottom-right" />
-                </BorderWrapper>
-            </div>
-        </div>
+                            <BoardComponent />
+
+                            <BorderWrapper>
+                                <Corner position="bottom-left" />
+                                <Border direction="horizontal" />
+                                <Corner position="bottom-right" />
+                            </BorderWrapper>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </>
     );
 };
 

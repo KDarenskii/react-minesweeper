@@ -1,5 +1,7 @@
+@import "../../assets/styles/vars.scss";
+
 .statistics {
-    background-color: antiquewhite;
+    background-color: $white;
     border-radius: 10px;
     padding: 15px;
     text-align: center;
@@ -9,10 +11,10 @@
         font-weight: 700;
         margin-bottom: 10px;
         &--win {
-            color: green;
+            color: $green;
         }
         &--lose {
-            color: red;
+            color: $red;
         }
     }
 }

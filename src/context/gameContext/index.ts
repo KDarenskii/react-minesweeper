@@ -1,10 +1,11 @@
 import React from "react";
+import { GAME_DIFFICULTIES } from "../../constants/gameDifficulties";
 import { SMILE_STATUSES } from "../../constants/smileStatuses";
 import Board from "../../models/Board";
 import Cell from "../../models/Cell";
 import GameManager from "../../models/GameManager";
 
-type TGameContext = {
+type GameState = {
     restartGame: (cell?: Cell) => void;
     time: number;
     isWin: boolean;
@@ -21,7 +22,9 @@ type TGameContext = {
     updateTimer: () => void;
     initializeBoard: (cell?: Cell) => void;
     gameManager: GameManager;
+    difficulty: GAME_DIFFICULTIES | null;
+    setDifficulty: React.Dispatch<React.SetStateAction<GAME_DIFFICULTIES | null>>;
 };
 
-export const GameContext = React.createContext<TGameContext>({} as TGameContext);
+export const GameContext = React.createContext<GameState>({} as GameState);
 export const useGameContext = () => React.useContext(GameContext);

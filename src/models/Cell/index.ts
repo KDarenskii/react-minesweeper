@@ -7,6 +7,7 @@ export default class Cell {
     readonly id: string;
     readonly x: number;
     readonly y: number;
+
     constructor(x: number, y: number, hasMine: boolean) {
         this.id = String(Math.random());
         this.x = x;
@@ -14,7 +15,7 @@ export default class Cell {
         this.hasMine = hasMine;
     }
 
-    public changeCellStatus() {
+    public changeStatus() {
         if (this.status === CELL_STATUSES.EMPTY) return;
 
         if (this.status === CELL_STATUSES.HIDDEN) {
@@ -26,7 +27,7 @@ export default class Cell {
         }
     }
 
-    public openCell(isClicked: boolean) {
+    public open(isClicked: boolean) {
         if (this.status !== CELL_STATUSES.HIDDEN) return;
 
         if (this.hasMine && isClicked) {

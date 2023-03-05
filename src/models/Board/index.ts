@@ -4,9 +4,9 @@ import { getRandomNumberInRange } from "../../helpers/getRandomNumberInRange";
 import { CELL_STATUSES } from "../../constants/cellStatuses";
 
 export default class Board {
-    readonly boardSize;
+    readonly boardSize: number;
     field: Cell[][] = [];
-    readonly minesNumber;
+    readonly minesNumber: number;
     private minesPositions: Point[] = [];
 
     constructor(boardSize: number = 10, minesNumber: number = 8) {
@@ -33,8 +33,8 @@ export default class Board {
         }
     }
 
-    public initBoard(cell?: Cell) {
-        this.clearBoard();
+    public init(cell?: Cell) {
+        this.clear();
 
         do {
             this.generateMines();
@@ -44,9 +44,9 @@ export default class Board {
             const row: Cell[] = [];
             for (let y = 0; y < this.boardSize; y++) {
                 const currentCell = new Cell(x, y, false);
-                const hasMine = this.minesPositions.some((pos) => this.isCellsMathing(pos, { x, y }));
+                const hasMine = this.minesPositions.some((pos) => this.isCellsMatching(pos, { x, y }));
                 currentCell.hasMine = hasMine;
-                if (cell && this.isCellsMathing(cell, currentCell)) {
+                if (cell && this.isCellsMatching(cell, currentCell)) {
                     row.push(cell);
                 } else {
                     row.push(currentCell);
@@ -57,13 +57,13 @@ export default class Board {
     }
 
     public getCopyBoard(): Board {
-        const newBoard = new Board();
+        const newBoard = new Board(this.boardSize, this.minesNumber);
         newBoard.field = this.field;
         newBoard.minesPositions = this.minesPositions;
         return newBoard;
     }
 
-    private isCellsMathing(a: Point, b: Point) {
+    private isCellsMatching(a: Point, b: Point) {
         return a.x === b.x && a.y === b.y;
     }
 
@@ -84,7 +84,7 @@ export default class Board {
         return { cells, minesCount };
     }
 
-    private clearBoard() {
+    private clear() {
         this.field = [];
         this.minesPositions = [];
     }
@@ -95,12 +95,14 @@ export default class Board {
                 const status = currentCell.status;
                 const hasMine = currentCell.hasMine;
 
-                if (hasMine && this.isCellsMathing(currentCell, cell)) {
-                    currentCell.status = CELL_STATUSES.MISSED;
-                } else if (hasMine) {
+                if (hasMine && this.isCellsMatching(currentCell, cell)) {
+                    currentCell.status = CELL_STATUSES.HITTED_MINE;
+                } else if (hasMine && status !== CELL_STATUSES.MARKED && status !== CELL_STATUSES.SUPPOSED) {
                     currentCell.status = CELL_STATUSES.MINE;
-                } else if (status === CELL_STATUSES.MARKED && !hasMine) {
+                } else if (!hasMine && status === CELL_STATUSES.MARKED) {
                     currentCell.status = CELL_STATUSES.MISSED;
+                } else if (!hasMine && status === CELL_STATUSES.SUPPOSED) {
+                    currentCell.status = CELL_STATUSES.MISSED_SUPPOSED;
                 }
             })
         );

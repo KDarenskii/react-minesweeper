@@ -1,65 +1,66 @@
 .cell {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     &--type-number-1 {
-        background: url("./../../assets/img/cells/number-1.svg") no-repeat;
-        background-size: cover;
+        background: url("./../../assets/img/sprite.png") no-repeat;
+        background-position: 0px -67.6px;
     }
     &--type-number-2 {
-        background: url("./../../assets/img/cells/number-2.svg") no-repeat;
-        background-size: cover;
+        background: url("./../../assets/img/sprite.png") no-repeat;
+        background-position: -17px -67.6px;
     }
     &--type-number-3 {
-        background: url("./../../assets/img/cells/number-3.svg") no-repeat;
-        background-size: cover;
+        background: url("./../../assets/img/sprite.png") no-repeat;
+        background-position: -34px -67.6px;
     }
     &--type-number-4 {
-        background: url("./../../assets/img/cells/number-4.svg") no-repeat;
-        background-size: cover;
+        background: url("./../../assets/img/sprite.png") no-repeat;
+        background-position: -51px -67.6px;
     }
     &--type-number-5 {
-        background: url("./../../assets/img/cells/number-5.svg") no-repeat;
-        background-size: cover;
+        background: url("./../../assets/img/sprite.png") no-repeat;
+        background-position: -68px -67.6px;
     }
     &--type-number-6 {
-        background: url("./../../assets/img/cells/number-6.svg") no-repeat;
-        background-size: cover;
+        background: url("./../../assets/img/sprite.png") no-repeat;
+        background-position: -85px -67.6px;
     }
     &--type-number-7 {
-        background: url("./../../assets/img/cells/number-7.svg") no-repeat;
-        background-size: cover;
+        background: url("./../../assets/img/sprite.png") no-repeat;
+        background-position: -102px -67.6px;
     }
     &--type-number-8 {
-        background: url("./../../assets/img/cells/number-8.svg") no-repeat;
-        background-size: cover;
+        background: url("./../../assets/img/sprite.png") no-repeat;
+        background-position: -119px -67.6px;
     }
     &[data-status="empty"] {
-        background: url("./../../assets/img/cells/empty-cell.svg") no-repeat;
-        background-size: cover;
+        background: url("./../../assets/img/sprite.png") no-repeat;
+        background-position: -17px -50.6px;
     }
     &[data-status="hidden"] {
-        background: url("./../../assets/img/cells/hidden-cell.svg") no-repeat center center;
-        background-size: cover;
+        background: url("./../../assets/img/sprite.png") no-repeat center center;
+        background-position: 0px -50px;
     }
     &[data-status="mine"] {
-        background: url("./../../assets/img/cells/mine-cell.svg") no-repeat center center;
-        background-size: cover;
+        background: url("./../../assets/img/sprite.png") no-repeat center center;
+        background-position: -85px -51px;
     }
     &[data-status="hitted-mine"] {
-        background: url("./../../assets/img/cells/hitted-mine-cell.svg") no-repeat center center;
-        background-size: cover;
+        background: url("./../../assets/img/sprite.png") no-repeat center center;
+        background-position: -102px -50.5px;
     }
     &[data-status="marked"] {
-        background: url("./../../assets/img/cells/marked-cell.svg") no-repeat center center;
-        background-size: cover;
+        background: url("./../../assets/img/sprite.png") no-repeat center center;
+        background-position: -34px -50px;
     }
     &[data-status="missed"] {
-        background: url("./../../assets/img/cells/missed-cell.jpg") no-repeat center center;
-        background-size: cover;
+        background: url("./../../assets/img/sprite.png") no-repeat center center;
+        background-position: -119px -50.5px;
     }
     &[data-status="supposed"] {
-        background: url("./../../assets/img/cells/supposed-cell.jpg") no-repeat center center;
-        background-size: cover;
+        background: url("./../../assets/img/sprite.png") no-repeat center center;
+        background-position: -51px -50px;
+    }
+    &[data-status="missed-supposed"] {
+        background: url("./../../assets/img/sprite.png") no-repeat center center;
+        background-position: -68px -51px;
     }
 }

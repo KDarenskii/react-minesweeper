@@ -3,7 +3,6 @@ import Cell from "../Cell";
 
 export default class GameManager {
     time: number = 0;
-    clicksCount: number = 0;
     isPlaying: boolean = false;
     isWin: boolean = false;
     isLose: boolean = false;

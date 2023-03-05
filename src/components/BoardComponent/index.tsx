@@ -31,7 +31,7 @@ const BoardComponent: React.FC = () => {
     const handleCellRightClick = (event: React.MouseEvent, cell: Cell) => {
         if (isGameFinished) return;
         event.preventDefault();
-        cell.changeCellStatus();
+        cell.changeStatus();
         updateBoard();
         setIsGameGoing(true);
     };
@@ -44,7 +44,7 @@ const BoardComponent: React.FC = () => {
             cell.hasMine = false;
         }
 
-        cell.openCell(isClicked);
+        cell.open(isClicked);
 
         if (cell.status === CELL_STATUSES.NUMBER) {
             const { cells, minesCount } = board.getNearbyCells(cell);
@@ -60,10 +60,7 @@ const BoardComponent: React.FC = () => {
         setIsOpenedCell(true);
 
         if (checkIsGameEnded(board.field)) {
-            setIsGameGoing(false);
-            setIsGameFinished(true);
-            board.openCells(cell);
-            updateBoard();
+            finishGame(cell);
         }
     };
 
@@ -73,35 +70,45 @@ const BoardComponent: React.FC = () => {
     };
 
     const handleMouseDown = (event: React.MouseEvent) => {
-        if (event.button !== 2) {
+        if (event.button !== 2 && !isGameFinished) {
             setSmileStatus(SMILE_STATUSES.AFRAID);
         }
     };
 
+    const handleMouseUp = () => {
+        if (!isGameFinished) setSmileStatus(SMILE_STATUSES.UNPRESSED);
+    };
+
+    const finishGame = (cell: Cell) => {
+        setIsGameGoing(false);
+        setIsGameFinished(true);
+        setIsOpenedCell(false);
+        board.openCells(cell);
+        updateBoard();
+    };
+
     return (
         <div className="board">
-            <div className="board__body">
-                <BorderWrapper>
-                    <Border length="long" direction="vertical" />
-                    <div className="board__field" ref={fieldRef}>
-                        {board.field.map((row, index) => (
-                            <React.Fragment key={index}>
-                                {row.map((cell) => (
-                                    <CellComponent
-                                        cell={cell}
-                                        key={cell.id}
-                                        onLeftClick={handleOpenCell}
-                                        onRightClick={handleCellRightClick}
-                                        onMouseDown={handleMouseDown}
-                                        onMouseUp={() => setSmileStatus(SMILE_STATUSES.UNPRESSED)}
-                                    />
-                                ))}
-                            </React.Fragment>
-                        ))}
-                    </div>
-                    <Border length="long" direction="vertical" />
-                </BorderWrapper>
-            </div>
+            <BorderWrapper>
+                <Border direction="vertical" />
+                <div className="board__field" ref={fieldRef}>
+                    {board.field.map((row, index) => (
+                        <React.Fragment key={index}>
+                            {row.map((cell) => (
+                                <CellComponent
+                                    cell={cell}
+                                    key={cell.id}
+                                    onLeftClick={handleOpenCell}
+                                    onRightClick={handleCellRightClick}
+                                    onMouseDown={handleMouseDown}
+                                    onMouseUp={handleMouseUp}
+                                />
+                            ))}
+                        </React.Fragment>
+                    ))}
+                </div>
+                <Border direction="vertical" />
+            </BorderWrapper>
         </div>
     );
 };

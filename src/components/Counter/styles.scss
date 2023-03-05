@@ -1,54 +1,52 @@
 .counter {
     display: flex;
     align-items: center;
-    gap: 2px;
     background-color: black;
     // .counter__number
     &__number {
-        height: 30px;
-        width: 16px;
-        &[data-mine-number="0"] {
-            background: url("./../../assets/img/counter-numbers/number-0.svg") center center no-repeat;
-            background-size: cover;
+        height: 23px;
+        width: 13px;
+        &[data-number="0"] {
+            background: url("./../../assets/img/sprite.png") no-repeat;
+            background-position: -126px 0;
         }
-        &[data-mine-number="1"] {
-            background: url("./../../assets/img/counter-numbers/number-1.svg") center center no-repeat;
-            background-size: cover;
+        &[data-number="1"] {
+            background: url("./../../assets/img/sprite.png") no-repeat;
         }
-        &[data-mine-number="2"] {
-            background: url("./../../assets/img/counter-numbers/number-2.svg") center center no-repeat;
-            background-size: cover;
+        &[data-number="2"] {
+            background: url("./../../assets/img/sprite.png") no-repeat;
+            background-position: -14px 0;
         }
-        &[data-mine-number="3"] {
-            background: url("./../../assets/img/counter-numbers/number-3.svg") center center no-repeat;
-            background-size: cover;
+        &[data-number="3"] {
+            background: url("./../../assets/img/sprite.png") no-repeat;
+            background-position: -28px 0;
         }
-        &[data-mine-number="4"] {
-            background: url("./../../assets/img/counter-numbers/number-4.svg") center center no-repeat;
-            background-size: cover;
+        &[data-number="4"] {
+            background: url("./../../assets/img/sprite.png") no-repeat;
+            background-position: -42px 0;
         }
-        &[data-mine-number="5"] {
-            background: url("./../../assets/img/counter-numbers/number-5.svg") center center no-repeat;
-            background-size: cover;
+        &[data-number="5"] {
+            background: url("./../../assets/img/sprite.png") no-repeat;
+            background-position: -56px 0;
         }
-        &[data-mine-number="6"] {
-            background: url("./../../assets/img/counter-numbers/number-6.svg") center center no-repeat;
-            background-size: cover;
+        &[data-number="6"] {
+            background: url("./../../assets/img/sprite.png") no-repeat;
+            background-position: -70px 0;
         }
-        &[data-mine-number="7"] {
-            background: url("./../../assets/img/counter-numbers/number-7.svg") center center no-repeat;
-            background-size: cover;
+        &[data-number="7"] {
+            background: url("./../../assets/img/sprite.png") no-repeat;
+            background-position: -84px 0;
         }
-        &[data-mine-number="8"] {
-            background: url("./../../assets/img/counter-numbers/number-8.svg") center center no-repeat;
-            background-size: cover;
+        &[data-number="8"] {
+            background: url("./../../assets/img/sprite.png") no-repeat;
+            background-position: -98px 0;
         }
-        &[data-mine-number="9"] {
-            background: url("./../../assets/img/counter-numbers/number-9.svg") center center no-repeat;
-            background-size: cover;
+        &[data-number="9"] {
+            background: url("./../../assets/img/sprite.png") no-repeat;
+            background-position: -112px 0;
         }
-        &[data-mine-number="-"] {
-            background: url("./../../assets/img/counter-numbers/minus.svg") center center no-repeat;
+        &[data-number="-"] {
+            background: url("./../../assets/img/minus.svg") center no-repeat;
             background-size: cover;
         }
     }

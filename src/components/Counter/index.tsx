@@ -13,9 +13,9 @@ const Counter: React.FC<Props> = ({ number }) => {
 
     return (
         <div className="counter">
-            <div className="counter__number" data-mine-number={splittedNumber[0]}></div>
-            <div className="counter__number" data-mine-number={splittedNumber[1]}></div>
-            <div className="counter__number" data-mine-number={splittedNumber[2]}></div>
+            <div className="counter__number" data-number={splittedNumber[0]}></div>
+            <div className="counter__number" data-number={splittedNumber[1]}></div>
+            <div className="counter__number" data-number={splittedNumber[2]}></div>
         </div>
     );
 };

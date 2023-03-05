@@ -1,0 +1,35 @@
+.difficulty-card {
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    &--easy {
+        background-color: #00dc82;
+    }
+    &--normal {
+        background-color: #ffc650;
+    }
+    &--hard {
+        background-color: #fd6767;
+    }
+    @media (min-width: 600px) {
+        &:hover {
+            transform: translate(3px, -3px);
+        }
+    }
+    // .difficulty-card__header
+    &__header {
+        margin-bottom: 10px;
+    }
+    // .difficulty-card__title
+    &__title {
+        text-align: center;
+        font-size: 18px;
+    }
+    // .difficulty-card__option
+    &__option {
+        &:first-child {
+            margin-bottom: 5px;
+        }
+    }
+}

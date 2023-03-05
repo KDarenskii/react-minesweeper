@@ -1,8 +1,6 @@
 import React from "react";
-import { useGameContext } from "../../context/gameContext";
-import Counter from "../Counter";
-
-import "./styles.scss";
+import { useGameContext } from "../context/gameContext";
+import Counter from "./Counter";
 
 const Timer: React.FC = () => {
     const [time, setTime] = React.useState(0);

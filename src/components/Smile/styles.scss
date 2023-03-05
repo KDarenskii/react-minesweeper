@@ -1,24 +1,24 @@
 .smile {
-    height: 30px;
-    width: 30px;
+    height: 27.9px;
+    width: 25.6px;
     &--unpressed {
-        background: url("./../../assets/img/smiles/smile-unpressed.svg");
-        background-size: cover;
+        background: url("./../../assets/img/sprite.png");
+        background-position: 0 60.8px;
     }
     &--pressed {
-        background: url("./../../assets/img/smiles/smile-pressed.svg");
-        background-size: cover;
+        background: url("./../../assets/img/sprite.png");
+        background-position: -27px 60.8px;
     }
     &--win {
-        background: url("./../../assets/img/smiles/smile-win.svg");
-        background-size: cover;
+        background: url("./../../assets/img/sprite.png");
+        background-position: -81px 60.8px;
     }
     &--lose {
-        background: url("./../../assets/img/smiles/smile-lose.svg");
-        background-size: cover;
+        background: url("./../../assets/img/sprite.png");
+        background-position: -108px 60.8px;
     }
     &--afraid {
-        background: url("./../../assets/img/smiles/smile-afraid.jpg");
-        background-size: cover;
+        background: url("./../../assets/img/sprite.png");
+        background-position: -54px 60.8px;
     }
 }
